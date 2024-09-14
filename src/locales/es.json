@@ -1,5 +1,25 @@
 {
-    "welcome": "¡Bienvenido a la aplicación!",
-    "message": "Este es un ejemplo simple de multilingüismo.",
-    "switchLanguage": "Cambiar idioma"
+    "welcome": "Bienvenidos a Gestora La Avanzada",
+    "home": "Inicio",
+    "form": "Formulario",
+    "managmentIncome": "Ingreso de la Gestión",
+    "managmentInformation": "Datos de la Gestión",
+    "business": "Negocio",
+    "businessPlaceholder": "Escriba Código del Negocio",
+    "user": "Usuario",
+    "userPlaceholder": "Escriba Código del Usuario",
+    "date": "Fecha",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "type": "Tipo",
+    "typePlaceholder": "Seleccione Tipo de Gestión",
+    "managment": "Gestión",
+    "managmentPlaceholder": "Seleccione Gestión",
+    "amount": "Compromiso de Monto",
+    "paymentDate": "Para Cuando",
+    "commentary": "Comentario",
+    "commentaryPlaceholder": "Escribir comentario...",
+    "save": "Guardar",
+    "close": "Salir",
+    "switchLanguage": "Cambiar Idioma"
 }

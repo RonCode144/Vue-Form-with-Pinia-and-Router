@@ -1,60 +1,20 @@
 import './app.css'
 import { createApp } from 'vue'
-import App from './AppLayout.vue'
+import { createPinia } from 'pinia'
+import App from './Layout/AppLayout.vue'
 import Aura from '@primevue/themes/aura';
-import i18n from './i18n';
-import PrimeVue from 'primevue/config';
-import ToastService from "primevue/toastservice";
-import Tooltip from "primevue/tooltip";
+import BadgeDirective from 'primevue/badgedirective';
 import Button from "primevue/button"
 import ConfirmationService from "primevue/confirmationservice";
-import BadgeDirective from 'primevue/badgedirective';
+import i18n from './i18n';
+import PrimeVue from 'primevue/config';
 import Ripple from 'primevue/ripple';
+import router from './routes';
+import ToastService from "primevue/toastservice";
+import Tooltip from "primevue/tooltip";
 
+const pinia = createPinia()
 const app = createApp(App)
-
-app.use(i18n)
-app.use(PrimeVue, {
-    theme: {
-        preset: Aura
-    },
-    ripple: true,
-    // locale: optionsPrimeVUE,
-    pt: {
-        button: {
-            root: '!h-8 !text-white'
-        },
-        inputtext: {
-            root: '!h-8 !bg-white !text-black'
-        },
-        dropdown: {
-            root: '!h-8',
-            input: '!py-0 !flex !items-center !text-sm !font-normal',
-            item: '!py-1 !px-3 !text-sm !font-normal',
-            filterInput: '!h-8'
-        },
-        multiselect: {
-            root: '!h-8',
-            label: '!py-0.5 !flex !h-full !items-center !text-sm !font-normal',
-            token: '!py-0 !px-1',
-            tokenLabel: '!text-sm',
-            item: '!py-1 !px-3 !text-sm !font-normal',
-            filterInput: '!h-8',
-            header: '!h-min !py-0.5'
-        }
-    },
-    zIndex: {
-        modal: 1100,        //dialog, sidebar
-        overlay: 1000,      //dropdown, overlaypanel
-        menu: 1000,         //overlay menus
-        tooltip: 1100       //tooltip
-    }
-})
-    .component('Button', Button)
-    .directive("tooltip", Tooltip)
-    .directive("badge", BadgeDirective)
-    .directive('ripple', Ripple)
-app.mount('#app')
 
 const optionsPrimeVUE = {
     startsWith: "Starts with",
@@ -206,3 +166,50 @@ const optionsPrimeVUE = {
         rotateLeft: "Rotate Left",
     },
 };
+
+app.use(i18n)
+app.use(router)
+app.use(pinia)
+app.use(PrimeVue, {
+    locale: optionsPrimeVUE,
+    theme: {
+        preset: Aura
+    },
+    ripple: true,
+    pt: {
+        button: {
+            root: '!h-8 !text-white'
+        },
+        inputtext: {
+            root: '!h-8 !bg-white !text-black'
+        },
+        textarea: {
+            root: '!h-8 !bg-white !text-black'
+        },
+        select: {
+            root: '!h-8 !bg-white !text-black',
+            label: '!h-8 !bg-white !text-black',
+            input: '!py-0 !flex !items-center !text-sm !font-normal',
+            pcFilterContainer: '!bg-white !text-black',
+            item: '!py-1 !px-3 !text-sm !font-normal',
+            filterInput: '!h-8'
+        },
+        multiselect: {
+            root: '!h-8',
+            label: '!py-0.5 !flex !h-full !items-center !text-sm !font-normal',
+            token: '!py-0 !px-1',
+            tokenLabel: '!text-sm',
+            item: '!py-1 !px-3 !text-sm !font-normal',
+            filterInput: '!h-8',
+            header: '!h-min !py-0.5'
+        }
+    },
+    zIndex: {        //overlay menus
+        tooltip: 1100       //tooltip
+    }
+})
+    .component('Button', Button)
+    .directive("tooltip", Tooltip)
+    .directive("badge", BadgeDirective)
+    .directive('ripple', Ripple)
+app.mount('#app')

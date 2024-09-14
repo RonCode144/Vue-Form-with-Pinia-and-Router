@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import { useCommonUtilities } from '../composables/useCommonUtilities';
 import Calendar from 'primevue/calendar';
 import Checkbox from 'primevue/checkbox';
-import Dropdown from 'primevue/dropdown';
+import Select from 'primevue/select';
 import FileUpload from 'primevue/fileupload';
 import IconField from 'primevue/iconfield';
 import InputIcon from 'primevue/inputicon';
@@ -339,7 +339,7 @@ defineEmits(['valueChange'])
                     :currency="currency" :mode="mode" :suffix :prefix :showButtons :step />
                 <Textarea v-else-if="type == 'textarea'" :id :disabled :rows="rowsTextarea" class="w-full" :required
                     :placeholder :class="invalid ? 'p-invalid' : ''" v-model="input" :aria-describedby="id + '-help'" />
-                <Dropdown v-else-if="type == 'dropdown'" :optionValue :id :disabled :placeholder :options :optionLabel
+                <Select v-else-if="type == 'dropdown'" :optionValue :id :disabled :placeholder :options :optionLabel
                     :editable :emptyMessage :loading @change="$emit('valueChange', $event)" showClear
                     :filter="optionLabel ? true : false" :class="invalid ? 'p-invalid' : ''" v-model="input"
                     :aria-describedby="id + '-help'" class="w-full" :pt="{
@@ -351,8 +351,8 @@ defineEmits(['valueChange'])
                     <template #option="slotProps">
                         <slot name="optionDropdown" :slotProps="slotProps" />
                     </template>
-                </Dropdown>
-                <Dropdown v-else-if="type == 'country'" :optionValue :id :disabled :placeholder :filterPlaceholder
+                </Select>
+                <Select v-else-if="type == 'country'" :optionValue :id :disabled :placeholder :filterPlaceholder
                     filter resetFilterOnHide :options="countries" :loading :class="invalid ? 'p-invalid' : ''"
                     v-model="input" optionLabel="translations.spa.common" :aria-describedby="id + '-help'"
                     class="w-full" :pt="{
@@ -378,7 +378,7 @@ defineEmits(['valueChange'])
                             <p>{{ slotProps.option.translations.spa.common }}</p>
                         </div>
                     </template>
-                </Dropdown>
+                </Select>
                 <MultiSelect v-else-if="type == 'multiselect'" :optionValue :id display="chip" v-model="input" :options
                     :optionLabel :loading :maxSelectedLabels :placeholder :disabled :filter="optionLabel ? true : false"
                     :class="invalid ? 'p-invalid' : ''" class="w-full" :aria-describedby="id + '-help'" :pt="{
