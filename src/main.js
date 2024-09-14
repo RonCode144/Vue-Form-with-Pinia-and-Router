@@ -10,7 +10,7 @@ import i18n from './i18n';
 import PrimeVue from 'primevue/config';
 import Ripple from 'primevue/ripple';
 import router from './routes';
-import ToastService from "primevue/toastservice";
+import ToastService from 'primevue/toastservice';
 import Tooltip from "primevue/tooltip";
 
 const pinia = createPinia()
@@ -167,6 +167,7 @@ const optionsPrimeVUE = {
     },
 };
 
+app.use(ToastService)
 app.use(i18n)
 app.use(router)
 app.use(pinia)

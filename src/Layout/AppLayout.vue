@@ -1,10 +1,9 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
-import { useSettingsStore } from '../stores/store'
-import Form from '../views/Form.vue'
-import Home from "../views/Home.vue"
+import { useSettingsStore } from '../stores/userSettingsStore'
 
 const settingsStore = useSettingsStore()
+
 const { locale } = useI18n()
 
 const toggleDarkMode = () => {
@@ -43,7 +42,7 @@ const changeLanguage = (lang) => {
         </button>
       </div>
     </nav>
-      <slot />
-      <router-view></router-view>
+    <slot />
+    <router-view />
   </main>
 </template>
